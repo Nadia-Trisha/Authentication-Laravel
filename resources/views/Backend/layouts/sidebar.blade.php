@@ -15,7 +15,7 @@
       {{-- products NAVI --}}
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-layout-text-window-reverse"></i><span>Product</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -26,6 +26,25 @@
           <li>
             <a href="{{URL('products/create')}}">
               <i class="bi bi-circle"></i><span>New Product</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav -->
+
+      {{-- category NAVI --}}
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#category-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Category</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="category-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{URL('category')}}">
+              <i class="bi bi-circle"></i><span> All Category</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{URL('category/create')}}">
+              <i class="bi bi-circle"></i><span>New Catrgory</span>
             </a>
           </li>
         </ul>

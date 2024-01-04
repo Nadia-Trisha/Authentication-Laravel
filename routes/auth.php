@@ -9,7 +9,9 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\backend\CategoryController;
+// use App\Http\Controllers\ProductController;
+use App\Http\Controllers\backend\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -58,9 +60,49 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
 
+
+                //product
+
     Route::get('products',[ProductController::class,'index'])  
                 ->name('product.index'); 
 
-    Route::get('products',[ProductController::class,'create'])  
-                ->name('product.create');       
+    Route::get('products/create',[ProductController::class,'create'])  
+                ->name('product.create'); 
+                
+    Route::post('products/store',[ProductController::class,'store'])
+                ->name('product.store')   ; 
+    
+    Route::post('products/edit',[ProductController::class,'edit'])
+                ->name('product.edit')   ;         
+
+    Route::post('products/update',[ProductController::class,'update'])
+                ->name('product.update')   ;         
+
+    Route::post('products/delete{id}',[ProductController::class,'delete'])
+                ->name('product.delete')   ;         
+
+
+
+                //category
+    
+    Route::get('category',[CategoryController::class,'index'])  
+                ->name('product.index');  
+
+    Route::get('category/create',[CategoryController::class,'create'])  
+                ->name('category.create'); 
+                
+    Route::post('category/store',[CategoryController::class,'store'])  
+                ->name('category.store'); 
+                
+
+    Route::get('category/edit',[CategoryController::class,'edit'])  
+                ->name('category.edit'); 
+
+    Route::post('category/update',[CategoryController::class,'update'])  
+                ->name('category.update'); 
+
+    Route::get('category/delete/{id}',[CategoryController::class,'delete'])  
+                ->name('category.delete'); 
+                
+                
 });
