@@ -36,8 +36,12 @@
                         <tr>
                     <td>{{$item->id}}</td>
                     <td>{{$item->name}}</td>
+                    <td>{{$item->description}}</td>
                     <td>{{$item->category->name}}</td>
                     <td>Edit | Delete</td>
+
+
+                    
                     {{-- <td>{{$cat->category_id}}</td> --}}
                     <td>
                         <a href="/product/edit/{{$cat['id']}}" class="btn btn-primary btn-sm">Edit</a>
