@@ -32,12 +32,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($products as $cat)
+                    @foreach ($products as $item)
                         <tr>
-                    <td>{{$cat->id}}</td>
-                    <td>{{$cat->name}}</td>
-                    <td>{{$cat->description}}</td>
-                    <td>{{$cat->category_id}}</td>
+                    <td>{{$item->id}}</td>
+                    <td>{{$item->name}}</td>
+                    <td>{{$item->category->name}}</td>
+                    <td>Edit | Delete</td>
+                    {{-- <td>{{$cat->category_id}}</td> --}}
                     <td>
                         <a href="/product/edit/{{$cat['id']}}" class="btn btn-primary btn-sm">Edit</a>
                         <a href="/product/delete/{{$cat['id']}}" class="btn btn-secondary btn-sm">Delete</a>

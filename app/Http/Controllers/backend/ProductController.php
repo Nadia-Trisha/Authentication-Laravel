@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data['products'] =Category::All();
+        $data['products'] =Product::all();
         return  view('Backend.product.index',$data);
     }
 
