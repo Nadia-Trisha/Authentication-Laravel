@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2024 at 07:48 AM
+-- Generation Time: Jan 16, 2024 at 08:22 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,7 +44,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', NULL, '$2y$12$dgMY7PfmJfyqDG7UOuI.4eFOtA/WnAsjTiSruNeEciKkuf.LyWPaC', 1, NULL, NULL, NULL);
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$12$sTQ.FJHdnrn6YThPEooVZ.k0se5GlXdR/CwnnZtCBC.yj65TN0LtW', 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -55,8 +55,8 @@ INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `s
 CREATE TABLE `categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(50) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -64,9 +64,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Trisha', NULL, NULL),
-(2, 'Trisha', NULL, NULL),
-(3, 'Fresh', NULL, NULL);
+(1, 'Shirt', '2024-01-16 06:38:24', '2024-01-16 06:38:24'),
+(2, 'Shoe', '2024-01-16 06:38:24', '2024-01-16 06:38:24'),
+(3, 'Belt', '2024-01-16 06:38:24', '2024-01-16 06:38:24');
 
 -- --------------------------------------------------------
 
@@ -101,13 +101,13 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(8, '2014_10_12_000000_create_users_table', 1),
-(9, '2014_10_12_100000_create_password_reset_tokens_table', 1),
-(10, '2019_08_19_000000_create_failed_jobs_table', 1),
-(11, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(12, '2024_01_03_062928_create_categories_table', 1),
-(13, '2024_01_03_063116_create_products_table', 1),
-(14, '2024_01_09_033633_create_admins_table', 1);
+(29, '2014_10_12_000000_create_users_table', 1),
+(30, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+(31, '2019_08_19_000000_create_failed_jobs_table', 1),
+(32, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(33, '2024_01_03_062928_create_categories_table', 1),
+(34, '2024_01_03_063116_create_products_table', 1),
+(35, '2024_01_09_033633_create_admins_table', 1);
 
 -- --------------------------------------------------------
 
@@ -150,11 +150,24 @@ CREATE TABLE `products` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(100) NOT NULL,
   `description` varchar(100) NOT NULL,
+  `image` varchar(50) DEFAULT NULL,
   `price` decimal(10,2) NOT NULL,
+  `tags` varchar(50) DEFAULT NULL,
   `category_id` tinyint(4) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `availibility` tinyint(1) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `description`, `image`, `price`, `tags`, `category_id`, `availibility`, `created_at`, `updated_at`) VALUES
+(1, 'White Shirt', 'product description content', 'images/no_photo.jpg', 100.00, 'no tag', 1, 1, '2024-01-16 06:38:24', '2024-01-16 06:38:24'),
+(2, 'Black Shirt', 'product description content', 'images/no_photo.jpg', 100.00, 'no tag', 2, 1, '2024-01-16 06:38:24', '2024-01-16 06:38:24'),
+(3, 'Blue Shirt', 'product description content', 'images/no_photo.jpg', 100.00, 'no tag', 3, 1, '2024-01-16 06:38:24', '2024-01-16 06:38:24'),
+(4, 'White Shirt', 'product description content', 'images/no_photo.jpg', 100.00, 'no tag', 4, 1, '2024-01-16 06:38:24', '2024-01-16 06:38:24');
 
 -- --------------------------------------------------------
 
@@ -169,8 +182,8 @@ CREATE TABLE `users` (
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -178,7 +191,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Nadia', 'nadia@gmail.com', NULL, '$2y$12$UhqWbw7NCKb/Rz84tuNtkusvHJ42DOjSDzieKirRXwKZvrzMMWz3y', NULL, '2024-01-13 00:02:48', '2024-01-13 00:02:48');
+(1, 'Masum', 'masum@gmail.com', NULL, '$2y$12$RhjF21NxskS5tvD87XIOQufBBeCDYmER9jg2ywtywTFM/rla28SMS', NULL, '2024-01-16 06:38:23', '2024-01-16 06:38:23');
 
 --
 -- Indexes for dumped tables
@@ -263,7 +276,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -275,7 +288,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`

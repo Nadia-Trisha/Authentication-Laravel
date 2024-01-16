@@ -44,8 +44,8 @@
                     
                     {{-- <td>{{$cat->category_id}}</td> --}}
                     <td>
-                        <a href="/product/edit/{{$cat['id']}}" class="btn btn-primary btn-sm">Edit</a>
-                        <a href="/product/delete/{{$cat['id']}}" class="btn btn-secondary btn-sm">Delete</a>
+                        <a href="/product/edit/{{$item['id']}}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="/product/delete/{{$item['id']}}" class="btn btn-secondary btn-sm">Delete</a>
                     </td>
                   </tr>
                   @endforeach

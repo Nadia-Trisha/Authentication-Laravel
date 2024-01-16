@@ -15,10 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('name',100);
             $table->string('description',100);
+            $table->string('image',50)->nullable();
             $table->decimal('price',10);
+            $table->string('tags',50)->nullable();
             $table->tinyInteger('category_id');
+            $table->boolean('availibility')->default(0)->nullable();
             
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

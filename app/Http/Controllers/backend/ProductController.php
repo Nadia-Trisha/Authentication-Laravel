@@ -32,6 +32,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validate = $request->validate([
+            'name' => 'required | min:4',
+            'description' => 'required | min(6)',
+            'price' => 'required | numeric',
+            'category_id' => 'required',
+            'photo' => 'mimes:jpg,jpeg,png',
+        ]);
+
+
+
       $data = [
         'name'=> $request->name,
         'description'=> $request->description,
